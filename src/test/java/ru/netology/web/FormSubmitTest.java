@@ -24,9 +24,8 @@ class FormSubmitTest {
     }
 
     @Test
-    void shouldDisplayErrorIfInvalidInput() {   //Проверка на ошибку "Телефон указан неверно.", если номер телефона введён с ошибкой
-        $("[data-test-id = name] input").setValue("Иванов Петр");
-        $("[data-test-id = phone] input").setValue("123");
+    void shouldDisplayErrorIfInvalidInput() {   //Проверка на ошибку, если имя введено неверно
+        $("[data-test-id = name] input").setValue("asd");
         $("button").click();
         $(".input_invalid").shouldHave(text("неверно"));
     }
