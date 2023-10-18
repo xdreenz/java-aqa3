@@ -26,6 +26,7 @@ class FormSubmitTest {
     void shouldDisplayErrorIfInvalidName() {   //Проверка на ошибку, если имя указано неверно
         $("[data-test-id = name] input").setValue("Qwerty");
         $("[data-test-id = phone] input").setValue("+71112223344");
+        $("[data-test-id = agreement]").click();
         $("button").click();
         $("[data-test-id = name].input_invalid .input__sub").shouldHave(text("неверно"));
     }
@@ -34,6 +35,7 @@ class FormSubmitTest {
     void shouldDisplayErrorIfInvalidPhone() {   //Проверка на ошибку, если телефон указан неверно
         $("[data-test-id = name] input").setValue("Петров Иван");
         $("[data-test-id = phone] input").setValue("123");
+        $("[data-test-id = agreement]").click();
         $("button").click();
         $("[data-test-id = phone].input_invalid .input__sub").shouldHave(text("неверно"));
     }
