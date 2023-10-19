@@ -61,7 +61,7 @@ class FormSubmitTest {
         $("[data-test-id = name] input").setValue("Петров Иван");
         $("[data-test-id = phone] input").setValue("+71112223344");
         $("button").click();
-        $("[data-test-id =agreement].input_invalid .checkbox__text").shouldBe(visible);
+        $("[data-test-id =agreement].input_invalid").shouldBe(visible);
     }
 
     @Test
