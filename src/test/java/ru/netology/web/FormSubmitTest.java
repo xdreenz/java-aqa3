@@ -32,12 +32,28 @@ class FormSubmitTest {
     }
 
     @Test
+    void shouldDisplayErrorIfNoName() {   //Проверка на ошибку, если имя не указано вовсе
+        $("[data-test-id = phone] input").setValue("+71112223344");
+        $("[data-test-id = agreement]").click();
+        $("button").click();
+        $("[data-test-id = name].input_invalid .input__sub").shouldHave(text("обязательно"));
+    }
+
+    @Test
     void shouldDisplayErrorIfInvalidPhone() {   //Проверка на ошибку, если телефон указан неверно
         $("[data-test-id = name] input").setValue("Петров Иван");
         $("[data-test-id = phone] input").setValue("123");
         $("[data-test-id = agreement]").click();
         $("button").click();
         $("[data-test-id = phone].input_invalid .input__sub").shouldHave(text("неверно"));
+    }
+
+    @Test
+    void shouldDisplayErrorIfNoPhone() {   //Проверка на ошибку, если телефон не указан вовсе
+        $("[data-test-id = name] input").setValue("Петров Иван");
+        $("[data-test-id = agreement]").click();
+        $("button").click();
+        $("[data-test-id = phone].input_invalid .input__sub").shouldHave(text("обязательно"));
     }
 
     @Test
